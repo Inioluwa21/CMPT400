@@ -14,18 +14,22 @@
 	<OptionLists>
 		<OptionList>
 			<Id>1733500186684</Id>
-			<Name><![CDATA[DischargeDestination]]></Name>
+			<Name><![CDATA[TransferDestination]]></Name>
 			<Option>
 				<Id>1733500187089</Id>
-				<Name><![CDATA[DischargeToHome]]></Name>
+				<Name><![CDATA[TransferToHome]]></Name>
 			</Option>
 			<Option>
 				<Id>1733500232844</Id>
-				<Name><![CDATA[DischargeToAssistedCare]]></Name>
+				<Name><![CDATA[TransferToAssistedCare]]></Name>
 			</Option>
 			<Option>
 				<Id>1733500244140</Id>
-				<Name><![CDATA[DischargeToLongTermCare]]></Name>
+				<Name><![CDATA[TransferToLongTermCare]]></Name>
+			</Option>
+			<Option>
+				<Id>1735839144563</Id>
+				<Name><![CDATA[TransferToHospital]]></Name>
 			</Option>
 		</OptionList>
 		<OptionList>
@@ -46,6 +50,26 @@
 			<Option>
 				<Id>1734716804988</Id>
 				<Name><![CDATA[DischargedFromHospital]]></Name>
+			</Option>
+		</OptionList>
+		<OptionList>
+			<Id>1735839131781</Id>
+			<Name><![CDATA[TransferSource]]></Name>
+			<Option>
+				<Id>1735839138173</Id>
+				<Name><![CDATA[TransferFromHome]]></Name>
+			</Option>
+			<Option>
+				<Id>1735839576998</Id>
+				<Name><![CDATA[TransferFromAssistedCare]]></Name>
+			</Option>
+			<Option>
+				<Id>1735839614307</Id>
+				<Name><![CDATA[TransferFromLongTermCare]]></Name>
+			</Option>
+			<Option>
+				<Id>1735839628418</Id>
+				<Name><![CDATA[TransferFromHospital]]></Name>
 			</Option>
 		</OptionList>
 	</OptionLists>
@@ -575,7 +599,7 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 			<CustomDistributions>
 				<CustomDistribution>
 					<Id>1733500294024</Id>
-					<Name><![CDATA[dischargeDestinationDistribution]]></Name>
+					<Name><![CDATA[transferDestinationDistribution]]></Name>
 					<X>760</X><Y>120</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -631,6 +655,10 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 						<OptionValue>						
 							<OptionID><![CDATA[1733500244140]]></OptionID>
 							<Value><![CDATA[0.15]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1735839144563]]></OptionID>
+							<Value><![CDATA[0.0]]></Value>
 						</OptionValue>				
 					</OptionValues>				
 				</CustomDistribution>		
@@ -1529,7 +1557,7 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
     			</PieChart>
     			<TimePlot>
 					<Id>1734102934103</Id>
-					<Name><![CDATA[plot]]></Name>
+					<Name><![CDATA[HospitalGraphs]]></Name>
 					<X>550</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -1580,10 +1608,40 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Title]]></Title>
+						<Title><![CDATA[Hospital Admissions Per Month]]></Title>
+					<Id>1735846620332</Id>
+					<Expression><![CDATA[monthlyHospitalAdmissions]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Total Hospital Admissions]]></Title>
 					<Id>1734714538078</Id>
 					<Expression><![CDATA[cummulativeHospitalAdmissions]]></Expression>
 					<Color>-4343957</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Hospital Discharges Per Month]]></Title>
+					<Id>1735846513996</Id>
+					<Expression><![CDATA[monthlyHospitalDischarges]]></Expression>
+					<Color>-12004916</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Total Hospital Discharges]]></Title>
+					<Id>1735846719312</Id>
+					<Expression><![CDATA[cummulativeHospitalDIscharges]]></Expression>
+					<Color>-8097537</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
@@ -1743,16 +1801,16 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1733500629608</Id>
-					<Name><![CDATA[dischargeDestination]]></Name>
+					<Name><![CDATA[transferDestination]]></Name>
 					<X>590</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[DischargeDestination]]></Type>        
+						<Type><![CDATA[TransferDestination]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[DischargeToHome]]></Code>
+							<Code><![CDATA[TransferToHome]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -2102,7 +2160,7 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[dischargeDestination == DischargeToAssistedCare]]></Condition>
+						<Condition><![CDATA[transferDestination == TransferToAssistedCare]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
@@ -2134,7 +2192,7 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[dischargeDestination == DischargeToHome]]></Condition>
+						<Condition><![CDATA[transferDestination == TransferToHome]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
@@ -2191,7 +2249,7 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 					</Points>
 					<IconOffset>30.0</IconOffset>
 					<Properties Source="1733459755804" Target="1733500461306" Trigger="message">
-						<Action><![CDATA[dischargeDestination = main.dischargeDestinationDistribution();
+						<Action><![CDATA[transferDestination = main.transferDestinationDistribution();
 traceln("Discharged from hospital");]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
