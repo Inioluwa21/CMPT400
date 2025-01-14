@@ -445,7 +445,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[10]]></Code>
+							<Code><![CDATA[100]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1733460562632</Id>
@@ -1498,63 +1498,6 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
 				</EmbeddedObjectPresentation>
-    			<PieChart>
-					<Id>1734101943263</Id>
-					<Name><![CDATA[chart]]></Name>
-					<X>350</X><Y>420</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1734163200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>220</Width>
-					<Height>170</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>10</YOffset>
-						<Width>100</Width>
-						<Height>100</Height>
-						<BorderColor/>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>40</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>true</ShowLegend>
-					<DataItem>
-					<Id>1734101944379</Id>
-					<Expression><![CDATA[population.countAtOfPeopleHome()]]></Expression>
-					<Color>-16711936</Color>
-						<Title><![CDATA[AtHome]]></Title>
-					</DataItem>
-					<DataItem>
-					<Id>1734101944382</Id>
-					<Expression><![CDATA[population.countOfPeopleAtClinic()]]></Expression>
-					<Color>-65536</Color>
-						<Title><![CDATA[AtHospital]]></Title>
-					</DataItem>
-    			</PieChart>
     			<TimePlot>
 					<Id>1734102934103</Id>
 					<Name><![CDATA[admissionsPerMonth]]></Name>
@@ -1564,7 +1507,7 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>true</AutoUpdate>
+					<AutoUpdate>false</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
 					<OccurrenceDate>1734163200000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
@@ -1849,7 +1792,7 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
     			<TimePlot>
 					<Id>1735849136643</Id>
 					<Name><![CDATA[totalAdmissions]]></Name>
-					<X>550</X><Y>610</Y>
+					<X>550</X><Y>620</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1943,6 +1886,83 @@ numberOfLTCDischargesMonthly = 0;]]></Action>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
+    			<BarChart>
+					<Id>1736516535051</Id>
+					<Name><![CDATA[chart1]]></Name>
+					<X>470</X><Y>440</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1736582400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>220</Width>
+					<Height>170</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>140</Width>
+						<Height>80</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1736516537855</Id>
+					<Expression><![CDATA[population.countAtOfPeopleHome()]]></Expression>
+					<Color>-16711936</Color>
+						<Title><![CDATA[AtHome]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1736516561488</Id>
+					<Expression><![CDATA[population.countOfPeopleAtClinic()]]></Expression>
+					<Color>-65536</Color>
+						<Title><![CDATA[AtHospital]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1736516583988</Id>
+					<Expression><![CDATA[population.countOfPeopleAtAssistedCare()]]></Expression>
+					<Color>-16711681</Color>
+						<Title><![CDATA[AtAssistedCare]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1736516618759</Id>
+					<Expression><![CDATA[population.countOfPeopleAtLongTermCare()]]></Expression>
+					<Color>-29696</Color>
+						<Title><![CDATA[AtLTC]]></Title>
+					</DataItem>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
 			</Presentation>
 
 				</Level>
@@ -3299,7 +3319,7 @@ message = GoToHospital;]]></Action>
 				<Connector>
 					<Id>1731336482261</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>110</X><Y>90</Y>
+					<X>110</X><Y>176.061</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3332,7 +3352,7 @@ message = GoToHospital;]]></Action>
 				<Connector>
 					<Id>1731336595420</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>220</X><Y>90</Y>
+					<X>220</X><Y>176.061</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3365,7 +3385,7 @@ message = GoToHospital;]]></Action>
 				<Connector>
 					<Id>1731336618568</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>330</X><Y>90</Y>
+					<X>330</X><Y>176.061</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3398,7 +3418,7 @@ message = GoToHospital;]]></Action>
 				<Connector>
 					<Id>1731336676865</Id>
 					<Name><![CDATA[success]]></Name>
-					<X>420</X><Y>90</Y>
+					<X>420</X><Y>176.061</Y>
 					<Label><X>-65</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3431,7 +3451,7 @@ message = GoToHospital;]]></Action>
 				<Connector>
 					<Id>1731336750195</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>75.523</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3458,13 +3478,13 @@ message = GoToHospital;]]></Action>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>510</X><Y>90</Y></Point>
-						<Point><X>460</X><Y>90</Y></Point>
+						<Point><X>460</X><Y>100</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1731337702787</Id>
 					<Name><![CDATA[treatmentFailure]]></Name>
-					<X>420</X><Y>90</Y>
+					<X>420</X><Y>176.061</Y>
 					<Label><X>-90</X><Y>30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3492,6 +3512,29 @@ message = GoToHospital;]]></Action>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>-80</X><Y>10</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1736543227822</Id>
+					<Name><![CDATA[connector3]]></Name>
+					<X>140</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[first_careseeking_abm]]></PackageName>
+						<ClassName><![CDATA[Clinic]]></ClassName>
+						<ItemName><![CDATA[timeOutExit]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Exit]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>320</X><Y>-90</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -3536,7 +3579,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731336434690</Id>
 					<Name><![CDATA[walkIn]]></Name>
-					<X>40</X><Y>80</Y>
+					<X>40</X><Y>164.89</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3668,7 +3711,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731336478385</Id>
 					<Name><![CDATA[allocateHealthWorker]]></Name>
-					<X>110</X><Y>70</Y>
+					<X>110</X><Y>153.719</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3899,7 +3942,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731336592564</Id>
 					<Name><![CDATA[treatment]]></Name>
-					<X>220</X><Y>70</Y>
+					<X>220</X><Y>153.719</Y>
 					<Label><X>-10</X><Y>60</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4002,7 +4045,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731336616827</Id>
 					<Name><![CDATA[selectOutput]]></Name>
-					<X>320</X><Y>80</Y>
+					<X>320</X><Y>164.89</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4092,7 +4135,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731336674470</Id>
 					<Name><![CDATA[release]]></Name>
-					<X>420</X><Y>70</Y>
+					<X>420</X><Y>153.719</Y>
 					<Label><X>-10</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4197,7 +4240,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731336748212</Id>
 					<Name><![CDATA[exit]]></Name>
-					<X>510</X><Y>80</Y>
+					<X>510</X><Y>164.89</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4263,7 +4306,7 @@ message = GoToHospital;]]></Action>
 				<EmbeddedObject>
 					<Id>1731337376163</Id>
 					<Name><![CDATA[healthCareWorkers]]></Name>
-					<X>120</X><Y>170</Y>
+					<X>120</X><Y>265.428</Y>
 					<Label><X>-30</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4477,6 +4520,69 @@ message = GoToHospital;]]></Action>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onBreakTerminated]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1736543287295</Id>
+					<Name><![CDATA[timeOutExit]]></Name>
+					<X>460</X><Y>70</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Exit]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Exit]]></ClassName>
+							<ItemName><![CDATA[1412336242934]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
