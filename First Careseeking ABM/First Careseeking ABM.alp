@@ -60,6 +60,14 @@
 				<Id>1735839144563</Id>
 				<Name><![CDATA[TransferToHospital]]></Name>
 			</Option>
+			<Option>
+				<Id>1740715045255</Id>
+				<Name><![CDATA[TransferToHomeCare]]></Name>
+			</Option>
+			<Option>
+				<Id>1740719563130</Id>
+				<Name><![CDATA[TransferToIntermediateCare]]></Name>
+			</Option>
 		</OptionList>
 		<OptionList>
 			<Id>1734068498463</Id>
@@ -79,6 +87,18 @@
 			<Option>
 				<Id>1734716804988</Id>
 				<Name><![CDATA[DischargedFromHospital]]></Name>
+			</Option>
+			<Option>
+				<Id>1739515540341</Id>
+				<Name><![CDATA[GoToAssistedCare]]></Name>
+			</Option>
+			<Option>
+				<Id>1739515551548</Id>
+				<Name><![CDATA[GoToLongTermCare]]></Name>
+			</Option>
+			<Option>
+				<Id>1740719579774</Id>
+				<Name><![CDATA[GoToIntermediateCare]]></Name>
 			</Option>
 		</OptionList>
 		<OptionList>
@@ -100,6 +120,10 @@
 				<Id>1735839628418</Id>
 				<Name><![CDATA[TransferFromHospital]]></Name>
 			</Option>
+			<Option>
+				<Id>1740715056285</Id>
+				<Name><![CDATA[TransferFromHomeCare]]></Name>
+			</Option>
 		</OptionList>
 	</OptionLists>
 	
@@ -111,6 +135,10 @@
 		<ActiveObjectClass>
 			<Id>1730124720711</Id>
 			<Name><![CDATA[Main]]></Name>
+			<StartupCode><![CDATA[hospitalVisitsHistogramData.reset();
+for (Person p : population) {
+    hospitalVisitsHistogramData.add(p.numberOfHospitalVisits);
+}]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1730124720718</Id>
@@ -649,6 +677,11 @@ cummulativeLTCAdmissions.add(numberOfLTCAdmissionsTotal);
 cummulativeLTCDischarges.add(numberOfLTCDischargesTotal);
 numberOfLTCAdmissionsMonthly = 0;
 numberOfLTCDischargesMonthly = 0;
+
+hospitalVisitsHistogramData.reset();
+for (Person p : population) {
+    hospitalVisitsHistogramData.add(p.numberOfHospitalVisits);
+}
 ]]></Action>
 				</Event>
 			</Events>
@@ -702,7 +735,7 @@ numberOfLTCDischargesMonthly = 0;
 					<OptionValues>
 						<OptionValue>						
 							<OptionID><![CDATA[1733500187089]]></OptionID>
-							<Value><![CDATA[0.7]]></Value>
+							<Value><![CDATA[0.5]]></Value>
 						</OptionValue>
 						<OptionValue>						
 							<OptionID><![CDATA[1733500232844]]></OptionID>
@@ -714,6 +747,14 @@ numberOfLTCDischargesMonthly = 0;
 						</OptionValue>
 						<OptionValue>						
 							<OptionID><![CDATA[1735839144563]]></OptionID>
+							<Value><![CDATA[0.0]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1740715045255]]></OptionID>
+							<Value><![CDATA[0.1]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1740719563130]]></OptionID>
 							<Value><![CDATA[0.0]]></Value>
 						</OptionValue>				
 					</OptionValues>				
@@ -1072,6 +1113,37 @@ numberOfLTCDischargesMonthly = 0;
 					<FreezeXAxis>true</FreezeXAxis>
 					<SamplesToKeep>100</SamplesToKeep>
 				</DataSet>
+    			<HistogramData>
+					<Id>1740112785485</Id>
+					<Name><![CDATA[hospitalVisitsHistogramData]]></Name>
+					<X>460</X><Y>1230</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1740124800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<Value><![CDATA[]]></Value>
+					<NumberOfIntervals>10</NumberOfIntervals>
+					<MinMaxAutodetect>true</MinMaxAutodetect>
+					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
+					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
+					<InitialIntervalSize><![CDATA[0.1]]></InitialIntervalSize>
+					<CalculateCDF>true</CalculateCDF>
+					<CalculatePercentiles>false</CalculatePercentiles>
+					<LowPercent>10</LowPercent>
+					<HighPercent>10</HighPercent>
+					<Title><![CDATA[]]></Title>
+				</HistogramData>
 			</AnalysisData>
 			<AgentLinks>
 				<AgentLink>
@@ -1199,21 +1271,21 @@ numberOfLTCDischargesMonthly = 0;
 						<Name><![CDATA[countAtOfPeopleHome]]></Name>
 						<Type>count</Type>
 						<Expression><![CDATA[]]></Expression>
-						<Condition><![CDATA[agent.inState(Person.AtHome)]]></Condition>
+						<Condition><![CDATA[agent.inState(Person.LivesAtHome)]]></Condition>
 					</StatisticsItem>
 					<StatisticsItem>
 						<Id>1734101812966</Id>
 						<Name><![CDATA[countOfPeopleAtAssistedCare]]></Name>
 						<Type>count</Type>
 						<Expression><![CDATA[]]></Expression>
-						<Condition><![CDATA[agent.inState(Person.AtAssistedCare)]]></Condition>
+						<Condition><![CDATA[agent.inState(Person.LivesAtAssistedCare)]]></Condition>
 					</StatisticsItem>
 					<StatisticsItem>
 						<Id>1734101849650</Id>
 						<Name><![CDATA[countOfPeopleAtLongTermCare]]></Name>
 						<Type>count</Type>
 						<Expression><![CDATA[]]></Expression>
-						<Condition><![CDATA[agent.inState(Person.AtLongTermCare)]]></Condition>
+						<Condition><![CDATA[agent.inState(Person.LivesAtLongTermCare)]]></Condition>
 					</StatisticsItem>
 					<StatisticsItem>
 						<Id>1734102043656</Id>
@@ -1945,7 +2017,7 @@ numberOfLTCDischargesMonthly = 0;
     			<BarChart>
 					<Id>1736516535051</Id>
 					<Name><![CDATA[chart1]]></Name>
-					<X>470</X><Y>440</Y>
+					<X>480</X><Y>440</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1988,6 +2060,12 @@ numberOfLTCDischargesMonthly = 0;
 					</Labels>
 					<ShowLegend>true</ShowLegend>
 					<DataItem>
+					<Id>1736516583988</Id>
+					<Expression><![CDATA[population.countOfPeopleAtAssistedCare()]]></Expression>
+					<Color>-16711681</Color>
+						<Title><![CDATA[AtAssistedCare]]></Title>
+					</DataItem>
+					<DataItem>
 					<Id>1736516537855</Id>
 					<Expression><![CDATA[population.countAtOfPeopleHome()]]></Expression>
 					<Color>-16711936</Color>
@@ -1998,12 +2076,6 @@ numberOfLTCDischargesMonthly = 0;
 					<Expression><![CDATA[population.countOfPeopleAtClinic()]]></Expression>
 					<Color>-65536</Color>
 						<Title><![CDATA[AtHospital]]></Title>
-					</DataItem>
-					<DataItem>
-					<Id>1736516583988</Id>
-					<Expression><![CDATA[population.countOfPeopleAtAssistedCare()]]></Expression>
-					<Color>-16711681</Color>
-						<Title><![CDATA[AtAssistedCare]]></Title>
 					</DataItem>
 					<DataItem>
 					<Id>1736516618759</Id>
@@ -2279,6 +2351,70 @@ numberOfLTCDischargesMonthly = 0;
 						<Title><![CDATA[FromAssistedCareToLTC]]></Title>
 					</DataItem>
     			</PieChart>
+    			<Histogram>
+					<Id>1740110182971</Id>
+					<Name><![CDATA[hospitalVisitsHistogram]]></Name>
+					<X>130</X><Y>1070</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1740124800000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>180</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<ShowPDF>true</ShowPDF>
+					<ShowCDF>false</ShowCDF>
+					<ShowMean>false</ShowMean>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+					<HistogramDataExpression>
+					<Id>1740110183781</Id>
+					<Expression><![CDATA[hospitalVisitsHistogramData]]></Expression>
+						<ColorPDF>-12004916</ColorPDF>
+						<ColorCDF>-60269</ColorCDF>
+						<ColorLowPercent>-16728065</ColorLowPercent>
+						<ColorHighPercent>-23296</ColorHighPercent>
+						<ColorMean>-6632142</ColorMean>
+						<LineWidth>1</LineWidth>						
+						<Title><![CDATA[Title]]></Title>							
+					</HistogramDataExpression>
+    			</Histogram>
 			</Presentation>
 
 				</Level>
@@ -2429,7 +2565,7 @@ numberOfLTCDischargesMonthly = 0;
 				<Variable Class="PlainVariable">
 					<Id>1733500629608</Id>
 					<Name><![CDATA[transferDestination]]></Name>
-					<X>590</X><Y>390</Y>
+					<X>40</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2444,7 +2580,7 @@ numberOfLTCDischargesMonthly = 0;
 				<Variable Class="PlainVariable">
 					<Id>1734068969198</Id>
 					<Name><![CDATA[message]]></Name>
-					<X>90</X><Y>340</Y>
+					<X>40</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2471,16 +2607,28 @@ numberOfLTCDischargesMonthly = 0;
 				<Variable Class="PlainVariable">
 					<Id>1739513081767</Id>
 					<Name><![CDATA[currentResidence]]></Name>
-					<X>440</X><Y>460</Y>
+					<X>40</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[String]]></Type>        
+						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[""]]></Code>
+							<Code><![CDATA[Home]]></Code>
 						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1740073652760</Id>
+					<Name><![CDATA[numberOfHospitalVisits]]></Name>
+					<X>40</X><Y>490</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -2546,7 +2694,7 @@ numberOfLTCDischargesMonthly = 0;
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1730125741062</Id>
 					<Name><![CDATA[Ill]]></Name>
-					<X>80</X><Y>210</Y>
+					<X>80</X><Y>250</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2558,57 +2706,92 @@ numberOfLTCDischargesMonthly = 0;
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1733459675254</Id>
-					<Name><![CDATA[AtHome]]></Name>
-					<X>510</X><Y>100</Y>
-					<Label><X>5</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="110" Height="40">
-						<EntryAction><![CDATA[moveTo(home);
-main.numberOfHomeAdmissionsMonthly += 1;]]></EntryAction>
-						<ExitAction><![CDATA[main.numberOfHomeDischargesMonthly += 1;]]></ExitAction>
-						<FillColor>-8388480</FillColor>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1733459755804</Id>
-					<Name><![CDATA[AtHospital]]></Name>
-					<X>450</X><Y>190</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="110" Height="40">
-						<EntryAction><![CDATA[moveTo(clinic);
-clinic.walkIn.take(this);
-main.numberOfHospitalAdmissionsMonthly += 1;]]></EntryAction>
-						<ExitAction><![CDATA[main.numberOfHospitalDischargesMonthly += 1;]]></ExitAction>
-						<FillColor>-1</FillColor>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1733459771660</Id>
-					<Name><![CDATA[AtAssistedCare]]></Name>
-					<X>620</X><Y>200</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+					<Name><![CDATA[LivesAtHome]]></Name>
+					<X>390</X><Y>100</Y>
+					<Label><X>10</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="120" Height="40">
+						<EntryAction><![CDATA[moveTo(home);
+main.numberOfHomeAdmissionsMonthly += 1;]]></EntryAction>
+						<ExitAction><![CDATA[main.numberOfHomeDischargesMonthly += 1;]]></ExitAction>
+						<FillColor>-16711936</FillColor>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1733459771660</Id>
+					<Name><![CDATA[LivesAtAssistedCare]]></Name>
+					<X>380</X><Y>210</Y>
+					<Label><X>15</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="150" Height="40">
 						<EntryAction><![CDATA[moveTo(assistedCare);
 assistedCare.numberOfPeopleAtAssistedCare += 1;
 main.numberOfACAdmissionsMonthly += 1;
-color = cyan;]]></EntryAction>
+color = cyan;
+traceln("in assisted care");
+currentResidence = AssistedCare;]]></EntryAction>
 						<ExitAction><![CDATA[assistedCare.numberOfPeopleAtAssistedCare -= 1;
 main.numberOfACDischargesMonthly += 1;]]></ExitAction>
 						<FillColor>-16711681</FillColor>
 					</Properties>
 				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1733500523639</Id>
+					<Name><![CDATA[LivesAtLongTermCare]]></Name>
+					<X>370</X><Y>330</Y>
+					<Label><X>5</X><Y>15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="160" Height="40">
+						<EntryAction><![CDATA[moveTo(longTermCare);
+longTermCare.numberOfPeopleAtLTC += 1;
+main.numberOfLTCAdmissionsMonthly += 1;
+color = gold;
+traceln("in long term care");
+currentResidence = LongTermCare;]]></EntryAction>
+						<ExitAction><![CDATA[longTermCare.numberOfPeopleAtLTC -= 1;
+main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
+						<FillColor>-10496</FillColor>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1739513621549</Id>
+					<Name><![CDATA[AtDomicileNoExtraCare]]></Name>
+					<X>640</X><Y>80</Y>
+					<Label><X>35</X><Y>15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="280" Height="50">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1739513655714</Id>
+					<Name><![CDATA[AtHospital]]></Name>
+					<X>640</X><Y>450</Y>
+					<Label><X>45</X><Y>20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="180" Height="50">
+						<EntryAction><![CDATA[moveTo(clinic);
+clinic.walkIn.take(this);
+main.numberOfHospitalAdmissionsMonthly += 1;
+numberOfHospitalVisits += 1;]]></EntryAction>
+						<ExitAction><![CDATA[main.numberOfHospitalDischargesMonthly += 1;]]></ExitAction>
+						<FillColor>-1</FillColor>
+					</Properties>
+				</StatechartElement>
 				<StatechartElement Class="Branch" ParentState="ROOT_NODE">
-					<Id>1733500461306</Id>
-					<Name><![CDATA[branch]]></Name>
-					<X>520</X><Y>350</Y>
+					<Id>1739513805746</Id>
+					<Name><![CDATA[branch1]]></Name>
+					<X>840</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2617,27 +2800,9 @@ main.numberOfACDischargesMonthly += 1;]]></ExitAction>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1733500523639</Id>
-					<Name><![CDATA[AtLongTermCare]]></Name>
-					<X>610</X><Y>300</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="130" Height="40">
-						<EntryAction><![CDATA[moveTo(longTermCare);
-longTermCare.numberOfPeopleAtLTC += 1;
-main.numberOfLTCAdmissionsMonthly += 1;
-color = gold;]]></EntryAction>
-						<ExitAction><![CDATA[longTermCare.numberOfPeopleAtLTC -= 1;
-main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
-						<FillColor>-10496</FillColor>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1739513621549</Id>
-					<Name><![CDATA[AtResidence]]></Name>
-					<X>870</X><Y>130</Y>
+					<Id>1740151634684</Id>
+					<Name><![CDATA[homeCare]]></Name>
+					<X>1030</X><Y>90</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2647,21 +2812,32 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1739513655714</Id>
-					<Name><![CDATA[state]]></Name>
-					<X>870</X><Y>210</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+					<Id>1740712982174</Id>
+					<Name><![CDATA[IntermediateCare]]></Name>
+					<X>980</X><Y>370</Y>
+					<Label><X>15</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="100" Height="30">
+					<Properties Width="140" Height="40">
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="Branch" ParentState="ROOT_NODE">
-					<Id>1739513805746</Id>
-					<Name><![CDATA[branch1]]></Name>
-					<X>910</X><Y>300</Y>
+					<Id>1740714658403</Id>
+					<Name><![CDATA[branch]]></Name>
+					<X>960</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Properties>	
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Branch" ParentState="ROOT_NODE">
+					<Id>1740714887748</Id>
+					<Name><![CDATA[branch2]]></Name>
+					<X>1040</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2688,13 +2864,13 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 					<Id>1730125748199</Id>
 					<Name><![CDATA[drawingIll]]></Name>
 					<X>100</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Label><X>-70</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>50</Y></Point>
+						<Point><X>0</X><Y>90</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1730125724750" Target="1730125741062" Trigger="rate">
@@ -2717,7 +2893,7 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1733459705492</Id>
 					<Name><![CDATA[residentialSituation]]></Name>
-					<X>560</X><Y>60</Y>
+					<X>440</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2731,18 +2907,18 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1733459878830</Id>
-					<Name><![CDATA[transition2]]></Name>
-					<X>610</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Name><![CDATA[HomeToAssistedCare]]></Name>
+					<X>440</X><Y>140</Y>
+					<Label><X>10</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>60</Y></Point>
+						<Point><X>0</X><Y>70</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733459675254" Target="1733459771660" Trigger="rate">
+					<Properties Source="1733459675254" Target="1733459771660" Trigger="message">
 						<Action><![CDATA[main.patientTransferMatrix.increment(Home, AssistedCare);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -2755,148 +2931,22 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
 						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1733460017868</Id>
-					<Name><![CDATA[transition3]]></Name>
-					<X>520</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>50</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733459675254" Target="1733459755804" Trigger="message">
-						<Action><![CDATA[main.patientTransferMatrix.increment(Home, Hospital);]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
 						<FilterType><![CDATA[equalsTo]]></FilterType>
-						<EqualsExpression><![CDATA[GoToHospital]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[message == GoToHospital]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1733460022700</Id>
-					<Name><![CDATA[transition4]]></Name>
-					<X>620</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-60</X><Y>-10</Y></Point>
-					</Points>
-					<IconOffset>30.0</IconOffset>
-					<Properties Source="1733459771660" Target="1733459755804" Trigger="message">
-						<Action><![CDATA[main.patientTransferMatrix.increment(AssistedCare, Hospital);]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[equalsTo]]></FilterType>
-						<EqualsExpression><![CDATA[GoToHospital]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[message == GoToHospital]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1733460046739</Id>
-					<Name><![CDATA[transition5]]></Name>
-					<X>520</X><Y>340</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>100</X><Y>-110</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733500461306" Target="1733459771660" Trigger="rate">
-						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, AssistedCare);]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[transferDestination == TransferToAssistedCare]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>false</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1733460665886</Id>
-					<Name><![CDATA[transition6]]></Name>
-					<X>508</X><Y>350</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-148</X><Y>-130</Y></Point>
-						<Point><X>-88</X><Y>-200</Y></Point>
-						<Point><X>2</X><Y>-230</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733500461306" Target="1733459675254" Trigger="rate">
-						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, Home);]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[transferDestination == TransferToHome]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>false</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<EqualsExpression><![CDATA[HomeToAssistedCare]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1733498287380</Id>
 					<Name><![CDATA[recovery]]></Name>
-					<X>160</X><Y>210</Y>
+					<X>160</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-50</Y></Point>
+						<Point><X>0</X><Y>-90</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1730125741062" Target="1730125724750" Trigger="message">
@@ -2918,84 +2968,20 @@ main.numberOfLTCDischargesMonthly += 1;]]></ExitAction>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1733500422796</Id>
-					<Name><![CDATA[discharge]]></Name>
-					<X>490</X><Y>230</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>30</X><Y>110</Y></Point>
-					</Points>
-					<IconOffset>30.0</IconOffset>
-					<Properties Source="1733459755804" Target="1733500461306" Trigger="message">
-						<Action><![CDATA[transferDestination = main.transferDestinationDistribution();
-traceln("Discharged from hospital");]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[equalsTo]]></FilterType>
-						<EqualsExpression><![CDATA[DischargedFromHospital]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1733500554474</Id>
-					<Name><![CDATA[transition1]]></Name>
-					<X>532</X><Y>350</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>78</X><Y>-20</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733500461306" Target="1733500523639" Trigger="timeout">
-						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, LongTermCare);]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1733500574019</Id>
-					<Name><![CDATA[transition7]]></Name>
-					<X>700</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Name><![CDATA[AssistedCareToLTC]]></Name>
+					<X>440</X><Y>250</Y>
+					<Label><X>0</X><Y>30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-10</X><Y>60</Y></Point>
+						<Point><X>0</X><Y>80</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733459771660" Target="1733500523639" Trigger="rate">
-						<Action><![CDATA[main.patientTransferMatrix.increment(AssistedCare, LongTermCare);
-currentResidence = "AtLTC"]]></Action>
+					<IconOffset>0.0</IconOffset>
+					<Properties Source="1733459771660" Target="1733500523639" Trigger="message">
+						<Action><![CDATA[main.patientTransferMatrix.increment(AssistedCare, LongTermCare);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -3007,26 +2993,26 @@ currentResidence = "AtLTC"]]></Action>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
 						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<FilterType><![CDATA[equalsTo]]></FilterType>
+						<EqualsExpression><![CDATA[GoToLongTermCare]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="Ill" ParentStateId="1730125741062">
 					<Id>1734717226582</Id>
-					<Name><![CDATA[transition]]></Name>
-					<X>170</X><Y>240</Y>
+					<Name><![CDATA[didNotRecover]]></Name>
+					<X>170</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>-90</X><Y>-20</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1730125741062" Target="1730125741062" Trigger="rate">
-						<Action><![CDATA[livingSituation.receiveMessage(GoToHospital);
+						<Action><![CDATA[careDelivery.receiveMessage(GoToHospital);
 message = GoToHospital;]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -3044,41 +3030,10 @@ message = GoToHospital;]]></Action>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1738287787525</Id>
-					<Name><![CDATA[transition8]]></Name>
-					<X>610</X><Y>310</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-50</X><Y>-90</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1733500523639" Target="1733459755804" Trigger="rate">
-						<Action><![CDATA[main.patientTransferMatrix.increment(LongTermCare, Hospital);]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[0.001]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1739513618907</Id>
-					<Name><![CDATA[acuteCareSituation]]></Name>
-					<X>910</X><Y>90</Y>
+					<Name><![CDATA[careDelivery]]></Name>
+					<X>680</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3092,18 +3047,19 @@ message = GoToHospital;]]></Action>
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1739513651715</Id>
-					<Name><![CDATA[transition9]]></Name>
-					<X>920</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Name><![CDATA[admitToHospital]]></Name>
+					<X>650</X><Y>130</Y>
+					<Label><X>-30</X><Y>85</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>50</Y></Point>
+						<Point><X>0</X><Y>320</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
-					<Properties Source="1739513621549" Target="1739513655714" Trigger="timeout">
+					<Properties Source="1739513621549" Target="1739513655714" Trigger="message">
+						<Action><![CDATA[main.patientTransferMatrix.increment(currentResidence, Hospital);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -3115,22 +3071,22 @@ message = GoToHospital;]]></Action>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
 						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<FilterType><![CDATA[equalsTo]]></FilterType>
+						<EqualsExpression><![CDATA[GoToHospital]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1739513818028</Id>
-					<Name><![CDATA[discharge1]]></Name>
-					<X>900</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Name><![CDATA[discharge]]></Name>
+					<X>770</X><Y>450</Y>
+					<Label><X>25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>10</X><Y>50</Y></Point>
+						<Point><X>58</X><Y>-70</Y></Point>
 					</Points>
 					<IconOffset>30.0</IconOffset>
 					<Properties Source="1739513655714" Target="1739513805746" Trigger="message">
@@ -3149,6 +3105,350 @@ traceln("Discharged from hospital");]]></Action>
 						<DefaultTransition>true</DefaultTransition>
 						<FilterType><![CDATA[equalsTo]]></FilterType>
 						<EqualsExpression><![CDATA[DischargedFromHospital]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1739514271918</Id>
+					<Name><![CDATA[transition10]]></Name>
+					<X>852</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>49</X><Y>-51</Y></Point>
+						<Point><X>96</X><Y>-100</Y></Point>
+					</Points>
+					<IconOffset>10.0</IconOffset>
+					<Properties Source="1739513805746" Target="1740714658403" Trigger="rate">
+						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, currentResidence);]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[transferDestination == TransferToHome]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>false</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1739514390062</Id>
+					<Name><![CDATA[dischargedToAssistedCare]]></Name>
+					<X>840</X><Y>370</Y>
+					<Label><X>-180</X><Y>-30</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-120</X><Y>-240</Y></Point>
+					</Points>
+					<IconOffset>40.0</IconOffset>
+					<Properties Source="1739513805746" Target="1739513621549" Trigger="rate">
+						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, AssistedCare);
+residentialSituation.receiveMessage(GoToAssistedCare);
+message = GoToAssistedCare]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[transferDestination == TransferToAssistedCare]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>false</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1739514692926</Id>
+					<Name><![CDATA[dischargeToLTC]]></Name>
+					<X>840</X><Y>370</Y>
+					<Label><X>-50</X><Y>-145</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-30</X><Y>-240</Y></Point>
+					</Points>
+					<IconOffset>30.0</IconOffset>
+					<Properties Source="1739513805746" Target="1739513621549" Trigger="timeout">
+						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, LongTermCare);
+traceln("LTC");
+residentialSituation.receiveMessage(GoToLongTermCare);
+message = GoToLongTermCare]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1739517681298</Id>
+					<Name><![CDATA[HomeToLTC]]></Name>
+					<X>390</X><Y>110</Y>
+					<Label><X>-125</X><Y>50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-60</X><Y>140</Y></Point>
+						<Point><X>-20</X><Y>230</Y></Point>
+					</Points>
+					<IconOffset>0.0</IconOffset>
+					<Properties Source="1733459675254" Target="1733500523639" Trigger="message">
+						<Action><![CDATA[main.patientTransferMatrix.increment(Home, LongTermCare);]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[0.001]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[equalsTo]]></FilterType>
+						<EqualsExpression><![CDATA[GoToLongTermCare]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740714683898</Id>
+					<Name><![CDATA[transition]]></Name>
+					<X>960</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>68</X><Y>-70</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740714658403" Target="1740714887748" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[currentResidence == Home]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>false</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740714862179</Id>
+					<Name><![CDATA[dischargeToResidence]]></Name>
+					<X>960</X><Y>270</Y>
+					<Label><X>-100</X><Y>-75</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-120</X><Y>-140</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740714658403" Target="1739513621549" Trigger="timeout">
+						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, currentResidence);]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740717755905</Id>
+					<Name><![CDATA[goToHome]]></Name>
+					<X>1028</X><Y>200</Y>
+					<Label><X>-70</X><Y>-30</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-158</X><Y>-70</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740714887748" Target="1739513621549" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740717785874</Id>
+					<Name><![CDATA[goToHomeCare]]></Name>
+					<X>1040</X><Y>190</Y>
+					<Label><X>15</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-70</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740714887748" Target="1740151634684" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[transferDestination == TransferToHomeCare]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>false</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740717959063</Id>
+					<Name><![CDATA[transition1]]></Name>
+					<X>1030</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-110</X><Y>0</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740151634684" Target="1739513621549" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[10]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740719261910</Id>
+					<Name><![CDATA[transition2]]></Name>
+					<X>852</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>69</X><Y>5</Y></Point>
+						<Point><X>128</X><Y>10</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1739513805746" Target="1740712982174" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[transferDestination == TransferToIntermediateCare]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>false</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740719883770</Id>
+					<Name><![CDATA[transition3]]></Name>
+					<X>1110</X><Y>370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>210</X><Y>-340</Y></Point>
+						<Point><X>-210</X><Y>-290</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740712982174" Target="1739513621549" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
@@ -3193,7 +3493,7 @@ traceln("Discharged from hospital");]]></Action>
 					<StatechartReference>
 						<PackageName><![CDATA[first_careseeking_abm]]></PackageName>
 						<ClassName><![CDATA[Person]]></ClassName>
-						<ItemName><![CDATA[acuteCareSituation]]></ItemName>
+						<ItemName><![CDATA[careDelivery]]></ItemName>
 					</StatechartReference>
 					<LineStyle>SOLID</LineStyle>
 					<LineWidth>1</LineWidth>
