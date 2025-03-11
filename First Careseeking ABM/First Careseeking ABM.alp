@@ -124,6 +124,26 @@
 				<Id>1740715056285</Id>
 				<Name><![CDATA[TransferFromHomeCare]]></Name>
 			</Option>
+			<Option>
+				<Id>1741247117446</Id>
+				<Name><![CDATA[TransferFromIntermediateCare]]></Name>
+			</Option>
+		</OptionList>
+		<OptionList>
+			<Id>1741711286860</Id>
+			<Name><![CDATA[MediumTermNeeds]]></Name>
+			<Option>
+				<Id>1741711286861</Id>
+				<Name><![CDATA[Low]]></Name>
+			</Option>
+			<Option>
+				<Id>1741711286862</Id>
+				<Name><![CDATA[Medium]]></Name>
+			</Option>
+			<Option>
+				<Id>1741711286863</Id>
+				<Name><![CDATA[High]]></Name>
+			</Option>
 		</OptionList>
 	</OptionLists>
 	
@@ -735,7 +755,7 @@ for (Person p : population) {
 					<OptionValues>
 						<OptionValue>						
 							<OptionID><![CDATA[1733500187089]]></OptionID>
-							<Value><![CDATA[0.5]]></Value>
+							<Value><![CDATA[0.7]]></Value>
 						</OptionValue>
 						<OptionValue>						
 							<OptionID><![CDATA[1733500232844]]></OptionID>
@@ -751,11 +771,145 @@ for (Person p : population) {
 						</OptionValue>
 						<OptionValue>						
 							<OptionID><![CDATA[1740715045255]]></OptionID>
-							<Value><![CDATA[0.1]]></Value>
+							<Value><![CDATA[0.15]]></Value>
 						</OptionValue>
 						<OptionValue>						
 							<OptionID><![CDATA[1740719563130]]></OptionID>
+							<Value><![CDATA[0.15]]></Value>
+						</OptionValue>				
+					</OptionValues>				
+				</CustomDistribution>
+				<CustomDistribution>
+					<Id>1741247079152</Id>
+					<Name><![CDATA[dischargeDestinationDistribution]]></Name>
+					<X>780</X><Y>-20</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type>DISCRETE</Type>
+					<DefinitionType>OPTIONS</DefinitionType>
+					<IntegerValues>false</IntegerValues>
+					<Static>false</Static>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<RangesQuery>
+					<TableReference>
+					</TableReference>
+						<StartColumnReference>
+						</StartColumnReference>
+						<EndColumnReference>
+						</EndColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</RangesQuery>
+					<FrequencyQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</FrequencyQuery>
+					<SampleQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+					</SampleQuery>
+					<OptionQuery>
+					<TableReference>
+					</TableReference>
+						<OptionColumnReference>
+						</OptionColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</OptionQuery>										
+					<OptionListID><![CDATA[1735839131781]]></OptionListID>
+					<OptionValues>
+						<OptionValue>						
+							<OptionID><![CDATA[1735839138173]]></OptionID>
+							<Value><![CDATA[0.85]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1735839576998]]></OptionID>
+							<Value><![CDATA[0.15]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1735839614307]]></OptionID>
 							<Value><![CDATA[0.0]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1735839628418]]></OptionID>
+							<Value><![CDATA[0.0]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1740715056285]]></OptionID>
+							<Value><![CDATA[0.0]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1741247117446]]></OptionID>
+							<Value><![CDATA[0.0]]></Value>
+						</OptionValue>				
+					</OptionValues>				
+				</CustomDistribution>
+				<CustomDistribution>
+					<Id>1741711481191</Id>
+					<Name><![CDATA[mediumTermNeeds]]></Name>
+					<X>800</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type>DISCRETE</Type>
+					<DefinitionType>OPTIONS</DefinitionType>
+					<IntegerValues>false</IntegerValues>
+					<Static>false</Static>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<RangesQuery>
+					<TableReference>
+					</TableReference>
+						<StartColumnReference>
+						</StartColumnReference>
+						<EndColumnReference>
+						</EndColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</RangesQuery>
+					<FrequencyQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</FrequencyQuery>
+					<SampleQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+					</SampleQuery>
+					<OptionQuery>
+					<TableReference>
+					</TableReference>
+						<OptionColumnReference>
+						</OptionColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</OptionQuery>										
+					<OptionListID><![CDATA[1741711286860]]></OptionListID>
+					<OptionValues>
+						<OptionValue>						
+							<OptionID><![CDATA[1741711286861]]></OptionID>
+							<Value><![CDATA[0.5]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1741711286862]]></OptionID>
+							<Value><![CDATA[0.3]]></Value>
+						</OptionValue>
+						<OptionValue>						
+							<OptionID><![CDATA[1741711286863]]></OptionID>
+							<Value><![CDATA[0.2]]></Value>
 						</OptionValue>				
 					</OptionValues>				
 				</CustomDistribution>		
@@ -1116,7 +1270,7 @@ for (Person p : population) {
     			<HistogramData>
 					<Id>1740112785485</Id>
 					<Name><![CDATA[hospitalVisitsHistogramData]]></Name>
-					<X>460</X><Y>1230</Y>
+					<X>240</X><Y>1290</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1268,7 +1422,7 @@ for (Person p : population) {
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<StatisticsItem>
 						<Id>1733501202930</Id>
-						<Name><![CDATA[countAtOfPeopleHome]]></Name>
+						<Name><![CDATA[countOfPeopleAtHome]]></Name>
 						<Type>count</Type>
 						<Expression><![CDATA[]]></Expression>
 						<Condition><![CDATA[agent.inState(Person.LivesAtHome)]]></Condition>
@@ -1293,6 +1447,27 @@ for (Person p : population) {
 						<Type>count</Type>
 						<Expression><![CDATA[]]></Expression>
 						<Condition><![CDATA[agent.inState(Person.AtHospital)]]></Condition>
+					</StatisticsItem>
+					<StatisticsItem>
+						<Id>1741220251527</Id>
+						<Name><![CDATA[countOfPeopleAtDomicile]]></Name>
+						<Type>count</Type>
+						<Expression><![CDATA[]]></Expression>
+						<Condition><![CDATA[agent.inState(Person.AtDomicileNoExtraCare)]]></Condition>
+					</StatisticsItem>
+					<StatisticsItem>
+						<Id>1741220278211</Id>
+						<Name><![CDATA[countOfPeopleAtHomeCare]]></Name>
+						<Type>count</Type>
+						<Expression><![CDATA[]]></Expression>
+						<Condition><![CDATA[agent.inState(Person.HomeCare)]]></Condition>
+					</StatisticsItem>
+					<StatisticsItem>
+						<Id>1741245569570</Id>
+						<Name><![CDATA[countOfPeopleAtIntermediateCare]]></Name>
+						<Type>count</Type>
+						<Expression><![CDATA[]]></Expression>
+						<Condition><![CDATA[agent.inState(Person.IntermediateCare)]]></Condition>
 					</StatisticsItem>
 					<InEnvironment>true</InEnvironment>	
 					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
@@ -2067,7 +2242,7 @@ for (Person p : population) {
 					</DataItem>
 					<DataItem>
 					<Id>1736516537855</Id>
-					<Expression><![CDATA[population.countAtOfPeopleHome()]]></Expression>
+					<Expression><![CDATA[population.countOfPeopleAtHome()]]></Expression>
 					<Color>-16711936</Color>
 						<Title><![CDATA[AtHome]]></Title>
 					</DataItem>
@@ -2415,6 +2590,138 @@ for (Person p : population) {
 						<Title><![CDATA[Title]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
+    			<PieChart>
+					<Id>1741220097340</Id>
+					<Name><![CDATA[residenceDistributionChart]]></Name>
+					<X>510</X><Y>1050</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1741248000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>10</YOffset>
+						<Width>140</Width>
+						<Height>140</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1741220098951</Id>
+					<Expression><![CDATA[population.countOfPeopleAtHome()]]></Expression>
+					<Color>-16711936</Color>
+						<Title><![CDATA[AtHome]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1741220098956</Id>
+					<Expression><![CDATA[population.countOfPeopleAtLongTermCare()]]></Expression>
+					<Color>-16776961</Color>
+						<Title><![CDATA[AtLTC]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1741245878478</Id>
+					<Expression><![CDATA[population.countOfPeopleAtAssistedCare()]]></Expression>
+					<Color>-4144960</Color>
+						<Title><![CDATA[AtAssistedCAre]]></Title>
+					</DataItem>
+    			</PieChart>
+    			<PieChart>
+					<Id>1741245704086</Id>
+					<Name><![CDATA[locationDistributionChart]]></Name>
+					<X>810</X><Y>1040</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1741248000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>10</YOffset>
+						<Width>140</Width>
+						<Height>140</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1741245704082</Id>
+					<Expression><![CDATA[population.countOfPeopleAtClinic()]]></Expression>
+					<Color>-2354116</Color>
+						<Title><![CDATA[AtHospital]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1741245704083</Id>
+					<Expression><![CDATA[population.countOfPeopleAtDomicile()]]></Expression>
+					<Color>-16711936</Color>
+						<Title><![CDATA[AtDomicile]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1741245970698</Id>
+					<Expression><![CDATA[population.countOfPeopleAtHomeCare()]]></Expression>
+					<Color>-256</Color>
+						<Title><![CDATA[AtHomeCare]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1741246018109</Id>
+					<Expression><![CDATA[population.countOfPeopleAtIntermediateCare()]]></Expression>
+					<Color>-10496</Color>
+						<Title><![CDATA[AtIntermediateCare]]></Title>
+					</DataItem>
+    			</PieChart>
 			</Presentation>
 
 				</Level>
@@ -2631,6 +2938,21 @@ for (Person p : population) {
 						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1741711533384</Id>
+					<Name><![CDATA[mediumTermNeeds]]></Name>
+					<X>40</X><Y>530</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[MediumTermNeeds]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[Low]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1730126099733</Id>
 					<Name><![CDATA[home]]></Name>
@@ -2801,7 +3123,7 @@ numberOfHospitalVisits += 1;]]></EntryAction>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1740151634684</Id>
-					<Name><![CDATA[homeCare]]></Name>
+					<Name><![CDATA[HomeCare]]></Name>
 					<X>1030</X><Y>90</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2838,6 +3160,17 @@ numberOfHospitalVisits += 1;]]></EntryAction>
 					<Id>1740714887748</Id>
 					<Name><![CDATA[branch2]]></Name>
 					<X>1040</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Properties>	
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Branch" ParentState="ROOT_NODE">
+					<Id>1740754171811</Id>
+					<Name><![CDATA[branch3]]></Name>
+					<X>920</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3118,11 +3451,11 @@ traceln("Discharged from hospital");]]></Action>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>49</X><Y>-51</Y></Point>
-						<Point><X>96</X><Y>-100</Y></Point>
+						<Point><X>37</X><Y>-41</Y></Point>
+						<Point><X>56</X><Y>-60</Y></Point>
 					</Points>
 					<IconOffset>10.0</IconOffset>
-					<Properties Source="1739513805746" Target="1740714658403" Trigger="rate">
+					<Properties Source="1739513805746" Target="1740754171811" Trigger="rate">
 						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, currentResidence);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -3143,17 +3476,17 @@ traceln("Discharged from hospital");]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1739514390062</Id>
 					<Name><![CDATA[dischargedToAssistedCare]]></Name>
-					<X>840</X><Y>370</Y>
-					<Label><X>-180</X><Y>-30</Y></Label>
+					<X>920</X><Y>310</Y>
+					<Label><X>-140</X><Y>-80</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-120</X><Y>-240</Y></Point>
+						<Point><X>-90</X><Y>-180</Y></Point>
 					</Points>
 					<IconOffset>40.0</IconOffset>
-					<Properties Source="1739513805746" Target="1739513621549" Trigger="rate">
+					<Properties Source="1740754171811" Target="1739513621549" Trigger="rate">
 						<Action><![CDATA[main.patientTransferMatrix.increment(Hospital, AssistedCare);
 residentialSituation.receiveMessage(GoToAssistedCare);
 message = GoToAssistedCare]]></Action>
@@ -3177,7 +3510,7 @@ message = GoToAssistedCare]]></Action>
 					<Id>1739514692926</Id>
 					<Name><![CDATA[dischargeToLTC]]></Name>
 					<X>840</X><Y>370</Y>
-					<Label><X>-50</X><Y>-145</Y></Label>
+					<Label><X>-120</X><Y>-110</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3424,20 +3757,49 @@ message = GoToLongTermCare]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1740719883770</Id>
 					<Name><![CDATA[transition3]]></Name>
-					<X>1110</X><Y>370</Y>
+					<X>1090</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>210</X><Y>-340</Y></Point>
-						<Point><X>-210</X><Y>-290</Y></Point>
+						<Point><X>-158</X><Y>-50</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
-					<Properties Source="1740712982174" Target="1739513621549" Trigger="timeout">
+					<Properties Source="1740712982174" Target="1740754171811" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1740754287202</Id>
+					<Name><![CDATA[transition4]]></Name>
+					<X>932</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>28</X><Y>-30</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1740754171811" Target="1740714658403" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[true]]></Condition>
